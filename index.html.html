@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Vishnu 💜</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Comic Sans MS',cursive;}
+body{
+  background:linear-gradient(135deg,#e6ccff,#ffd6e8,#ffffff);
+  overflow:hidden;
+  height:100vh;
+  text-align:center;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:0.7;}
+  100%{transform:translateY(-110vh);opacity:0;}
+}
+
+.container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:90%;
+}
+
+h1{
+  color:#6a0572;
+  font-size:3em;
+  margin-bottom:15px;
+}
+p{
+  color:#4a004a;
+  font-size:1.3em;
+  margin-bottom:20px;
+}
+
+button{
+  padding:12px 30px;
+  font-size:1.1em;
+  border:none;
+  border-radius:25px;
+  background:#ff7eb9;
+  color:white;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
+}
+button:hover{transform:scale(1.1);}
+
+#noBtn{
+  background:#aaa;
+  position:absolute;
+}
+
+.hidden{display:none;}
+.big{
+  font-size:4em;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_9e1a5b2b2c.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="page1">
+  <h1>Hey Vishnu 💜</h1>
+  <p>Someone has something very cute to tell you 🥺💗</p>
+  <button onclick="nextPage()">Tap here 🌸</button>
+</div>
+
+<div class="container hidden" id="page2">
+  <p>From the moment you came into my life…</p>
+  <p>everything started feeling softer, warmer & happier ✨</p>
+  <button onclick="nextPage2()">Next 💕</button>
+</div>
+
+<div class="container hidden" id="page3">
+  <p>So Vishnu… 💖</p>
+  <h1>Will you be mine?</h1>
+  <button onclick="yesClicked()">YES 💕</button>
+  <button id="noBtn" onclick="moveNo()">NO 🙄</button>
+</div>
+
+<div class="container hidden" id="page4">
+  <div class="big">Sacchiii 😭</div>
+  <p>You made my heart cry happy tears 💗</p>
+  <button onclick="nextPage3()">Aage bolo 🥺</button>
+</div>
+
+<div class="container hidden" id="page5">
+  <p>Vishnu…</p>
+  <p>I promise to annoy you, love you,</p>
+  <p>care for you & choose you every single day 💕</p>
+  <button onclick="nextPage4()">Last page 💖</button>
+</div>
+
+<div class="container hidden" id="page6">
+  <h1>Its always you Moti &lt;3!</h1>
+  <p>— SHAURYA 💜</p>
+</div>
+
+<script>
+let noCount=0;
+
+function nextPage(){
+  page1.classList.add("hidden");
+  page2.classList.remove("hidden");
+}
+function nextPage2(){
+  page2.classList.add("hidden");
+  page3.classList.remove("hidden");
+}
+function yesClicked(){
+  page3.classList.add("hidden");
+  page4.classList.remove("hidden");
+}
+function nextPage3(){
+  page4.classList.add("hidden");
+  page5.classList.remove("hidden");
+}
+function nextPage4(){
+  page5.classList.add("hidden");
+  page6.classList.remove("hidden");
+}
+
+function moveNo(){
+  noCount++;
+  let x=Math.random()*(window.innerWidth-100);
+  let y=Math.random()*(window.innerHeight-50);
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+
+  if(noCount>=6){
+    noBtn.innerHTML="Please 🥺💗";
+    noBtn.onclick=yesClicked;
+  }
+}
+
+/* hearts generator */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
